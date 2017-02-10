@@ -1,0 +1,89 @@
+\documentclass[12pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\title{Thesis Outline}
+\author{Zaiwei Liu}
+\date{}							% Activate to display a given date or no date
+
+\begin{document}
+%\maketitle
+
+%%% SECTION1
+\section{Jarque-Bera Statistic}
+%\subsection{}
+
+
+The traditional Jarque-Bera statistic is defined as
+
+\begin{equation}
+{JB}_n=n\left[\frac{s^2}{6}+\frac{(k-3)^2}{24}\right],
+\end{equation}
+
+where $s$ is the sample skewness and $K$ is the sample kurtosis.
+
+%The variance of the sample JB of a sample size n from the normal distribution is approximately equal to
+%
+%\begin{equation}
+%Var({JB}_n)=
+%\end{equation}
+
+Accordingly, a new parameter, we call it the Jarque-Bera parameter, is defined as
+
+\begin{equation}
+JB=N\left[\frac{S^2}{6}+\frac{(K-3)^2}{24}\right],
+\end{equation}
+
+where $S$ is the population skewness and $K$ is the population kurtosis.
+
+To apply JEL, we need to prove that ${JB}_n$ is a consistent estimator of $JB$, i.e.
+
+\begin{equation}
+\lim_{n \rightarrow \infty}P_{JB}(|{JB}_n-JB|< \epsilon)=1
+\end{equation}
+
+%%%SECTION2
+\section{JEL}
+
+In practice, it is unknown if the population is normal or not.
+
+Using Owen(1990), we just need to prove that the Jackknife JB has an asymptotic normal distribution.
+
+Wilk’s Theorem?
+Owen1990?
+
+\section{2017 Restart}
+
+\subsection{Endpoints of CI}
+
+Trying to code in matlab to find the endpoints of the confidence interval. Then hypothesis test can be done inversely.
+
+The 95\% confidence interval is of the form:
+\[
+R = \{\theta: l(\theta) \leq \chi^2(0.95) = 3.84 \}
+\]
+where
+\[
+l(\theta) = 2\sum_{i=1}^{n} \log\{1 + \lambda (\theta) (\hat{V_i} - \theta)\}
+\]
+and $\lambda$ satisfies:
+\[
+\frac{1}{n}\sum_{i=1}^n \frac{(\hat{V_i} - \theta)}{1 + \lambda (\hat{V_i} - \theta)} = 0
+\]
+
+So, we can apply numerical methods to find the endpoints of the confidence interval $R$.
+
+That is, starting from different $\theta$:
+
+1. Solve for $\lambda$: use \texttt{fsolve}.
+
+2. Solve for $\theta_L, \theta_U$: use \texttt{NEWTZERO(f,xr,n,tol)}; or in \texttt{R}.
+
+
+
+\end{document}  
